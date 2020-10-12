@@ -237,13 +237,106 @@ nav .container .menu .sitemap .item{
     width: 1198px;
     height: 110px;
     padding: 25px 0;
-    border-width: 0 1px 1px ;
-    border:solid #eee;
+    border:1px solid #eee;
+    border-top: none;
     position: absolute;
     top: 32px;
     right: 0;
     z-index: 999;
     display: none;
+    background: #fff;
+}
+nav .container .menu .sitemap .item .left{
+    width: 485px;
+    height: 110px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    float: left;
+    border-right: 1px #f5f5f5 solid;
+}
+nav .container .menu .sitemap .item .left h2{
+    width: 100%;
+    height: 30px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #f56a00;
+    text-align: left;
+    line-height: 22px;
+    font-weight: normal;
+}
+nav .container .menu .sitemap .item .left a{
+    display: block;
+    width: 90px;
+    height: 28px;
+    padding: 8px 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #666;
+    float: left;
+    text-align: left;
+    line-height: 12px;
+}
+nav .container .menu .sitemap .item .middle{
+    width: 485px;
+    height: 110px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    float: left;
+    border-right: 1px #f5f5f5 solid;
+}
+nav .container .menu .sitemap .item .middle h2{
+    width: 100%;
+    height: 30px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #2263d4;
+    text-align: left;
+    line-height: 22px;
+    font-weight: normal;
+}
+nav .container .menu .sitemap .item .middle a{
+    display: block;
+    width: 90px;
+    height: 28px;
+    padding: 8px 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #666;
+    float: left;
+    text-align: left;
+    line-height: 12px;
+}
+nav .container .menu .sitemap .item .right{
+    width: 226px;
+    height: 110px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    float: left;
+}
+nav .container .menu .sitemap .item .right h2{
+    width: 100%;
+    height: 30px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #666666;
+    text-align: left;
+    line-height: 22px;
+    font-weight: normal;
+}
+nav .container .menu .sitemap .item .right a{
+    display: block;
+    width: 90px;
+    height: 28px;
+    padding: 8px 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: #666;
+    float: left;
+    text-align: left;
+    line-height: 12px;
 }
 nav .container .menu .sitemap:hover{
     background: #fff;
@@ -478,7 +571,6 @@ header .header-logo{
     height: 500px;
     position: absolute;
     top: 36px;left: 200px;
-    overflow: hidden;
     display: none;
 }
 .banner .menu-nav-box .menu-nav ul .nav-list-box .nav-list{
@@ -493,32 +585,33 @@ header .header-logo{
     padding: 19px 30px;
     background: #fff;
 }
-.menu-nav-box .menu-nav ul .nav-list-box  .nav-list .left div{
-    float: left;
+.menu-nav-box .menu-nav ul .nav-list-box  .nav-list .left .text{
+    width: 100%;
 }
-.menu-nav-box .menu-nav ul .nav-list-box .nav-list .left .item1{
+
+.menu-nav-box .menu-nav ul .nav-list-box .nav-list .left .text .item1{
     width: 60px;
-    height: 66px;
     margin: 0 30px 10.5px 0;
     font-size: 14px;
     font-weight: 700;
     line-height: 22px;
-    color: #333 ;
+    color: #333;
+    float: left;
 }
-.menu-nav-box .menu-nav ul .nav-list-box .nav-list .left .item2{
+.menu-nav-box .menu-nav ul .nav-list-box .nav-list .left .text .item2{
     width: 493px;
-    height: 66px;
     border-bottom: 1px rgba(0,0,0,.1) dashed;
     margin-bottom: 10.5px;
     box-sizing: border-box;
+    float: left;
 }
 .menu-nav ul .nav-list-box .nav-list .left .item2 a{
     display: block;
     float: left;
-    height: 22px;
+    height: 26px;
     font-size: 14px;
     line-height: 22px;
-    color: #e54077;
+    color: #666666;
     margin-left: 13px;
 }
 .banner .menu-nav-box .menu-nav ul li i{
@@ -743,7 +836,6 @@ header .header-logo{
     float: left;
     width: 235px;
     height: 618px;
-
     position: relative;
 }
 .floor-line .floor-body .ad img{

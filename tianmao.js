@@ -211,7 +211,7 @@ function ani(obj,arrt,duration,runStyle,callback){
                 if(callback){
                     callback();
                 }
-                flag=true;
+                // flag=true;
             }else{                                                                     // 当运行时间在动画执行时间范围之内时
                 for(var i in arrt){                                                    // 遍历输入的属性
                     if(i=="opacity"){
@@ -239,8 +239,10 @@ var mobile=document.querySelector("nav .container .menu .mobile");
 var mobileItem=document.querySelector("nav .container .menu .mobile .item")
 var seller=document.querySelector("nav .container .menu .seller");
 var sellerItem=document.querySelector("nav .container .menu .seller .item");
+var sitemap=document.querySelector("nav .container .menu .sitemap");
+var sitemapItem=document.querySelector("nav .container .menu .sitemap .item");
 var imgs=document.querySelectorAll(".banner .banner-box .img");
-var banner=document.querySelector(".banner .banner-box");
+var banner=document.querySelector(".banner ");
 var btns=document.querySelectorAll(".banner .slider-nav li");
 var num=0;
 var navBtns=document.querySelectorAll(".banner .menu-nav-box .menu-nav ul .second");
@@ -252,6 +254,9 @@ var navIcon=document.querySelectorAll(".banner .menu-nav-box .menu-nav ul .secon
 var menu=document.querySelectorAll(".floor-line .floor-body .floor-item1 .box .top .head");
 var cons=document.querySelectorAll(".floor-line .floor-body .floor-item1 .box .bottom .cons");
 var flag=true;
+
+
+
 /** 给最上方的导航栏添加鼠标移入、移出事件*/
 /**mytaoboo */
 mytaoboo.onmouseover=function(){
@@ -287,16 +292,16 @@ seller.onmouseout=function(){
     sellerItem.style.display="none";
     seller.style.background="none"
 }
-/** 鼠标移出banner时，让轮播图继续自己执行**/
-banner.onmouseout=function(){
-    t=setInterval(move,3000);
+/** sitemap*/
+sitemap.onmouseover=function(){
+    sitemapItem.style.display="block";
+    sitemap.style.background="#fff"
 }
-/** 鼠标移入banner时，让轮播图停止自动执行**/
-banner.onmouseover=function(){
-    clearInterval(t);
+sitemap.onmouseout=function(){
+    sitemapItem.style.display="none";
+    sitemap.style.background="none"
 }
 /** 给轮播图和轮播点添加自动播放**/
-
 function move(){
     num++;
     if(num==imgs.length){
@@ -304,35 +309,49 @@ function move(){
     }
     for(var i=0;i<imgs.length;i++){
         imgs[i].style.opacity=0;
+        btns[i].style.background="#999";
     }
-    ani(imgs[num],{opacity:1},500,Tween.Linear);
-    for(var k=0;k<btns.length;k++){
-        btns[k].style.background="#999";
-    }
+    ani(imgs[num],{opacity:1},300,Tween.Linear);
     btns[num].style.background="white";
 }
+
 var t=setInterval(move,3000);
+/** 鼠标移入banner时，让轮播图停止自动执行**/
+banner.onmouseover=function(){
+    clearInterval(t);
+} 
+/** 鼠标移出banner时，让轮播图继续自己执行**/
+banner.onmouseout=function(){
+    t=setInterval(move,3000);
+}
+
+
 /** 给轮播点添加鼠标移入事件**/
 for(var i=0;i<btns.length;i++){
     btns[i].index=i;
     btns[i].onmouseover=function(){
-        if(!flag){
-            return;
-        }
-        flag=false;
         num=this.index;
-        for(var j=0;j<imgs.length;j++){
-            imgs[j].style.opacity=0;
-            btns[j].style.background="#999"
-        }
-        ani(imgs[num],{opacity:1},300,Tween.Linear);
-        btns[num].style.background="white";
-    }
+        delay(100,function(){
+            for(var j=0;j<imgs.length;j++){
+                imgs[j].style.opacity=0;
+                btns[j].style.background="#999"
+            }
+            ani(imgs[num],{opacity:1},300,Tween.Linear);
+            btns[num].style.background="white";
+        })     
+    }       
 }
-
+function delay(time,callback){
+    clearTimeout(btns.t);
+    btns.t=setTimeout(function(){
+        callback();
+    },time)
+}
     
 
 /**  侧边导航栏**/
+
+
 for(var i=0;i<navBtns.length;i++){
     navBtns[i].index=i;
     navBtns[i].onmouseover=function(){
@@ -353,10 +372,10 @@ navMenu.onmouseout=function(){
     for(var i=0;i<navBtns.length;i++){
         navBtns[i].style["background-color"]="rgba(0,0,0,.55)";
         a[i].style.color="white";
-        navCons[i].style.display="none";
         navIcon[i].style.color="white";
     }
     navList.style.display="none";
+
 }
 /** 天猫超市 选项卡添加 */
 for(var i=0;i<menu.length;i++){
@@ -372,20 +391,23 @@ for(var i=0;i<menu.length;i++){
         cons[this.index].style.display="block";
     }
 }
+// var num1=0;
 // var a=setInterval(function(){
-//     num++;
-//     if(num==menu.length){
-//         num=0;
+//     num1++;
+//     if(num1>menu.length-1){
+//         num1=0;
 //     }
 //     for(var i=0;i<menu.length;i++){
 //         menu[i].style.background="none"; 
 //         cons[i].style.display="none";
 //         menu[i].style.color="#000";
 //     }
-//     menu[num].style.background="#00b262";
-//     menu[num].style.color="white";
-//     cons[num].style.display="block";
+//     menu[num1].style.backgroundColor="#00b262";
+//     menu[num1].style.color="white";
+//     cons[num1].style.display="block";
 // },1000)
+
+
 /** 给顶部搜索栏添加滚动条滚动事件*/
 /** 给屏幕左下方固定导航栏添加滚动条滚动事件*/
 /** 滚动条滑动到某个位置时，导航栏对应模块变色*/
@@ -415,20 +437,26 @@ window.onscroll=function(){
     /**floor加载 */
     for(var i=0;i<floorBtns.length;i++){
         var floorImgs=floors[i].querySelectorAll("img");
-        if(document.documentElement.scrollTop>=floorBtns[i].top){
+        if(!floorBtns[i].flag){                                                        // 加开关可以防止重复不断地将address赋值给src
+        if(document.documentElement.scrollTop+window.innerHeight>floorBtns[i].top){
             for(var k=0;k<floorImgs.length;k++){
                 floorImgs[k].src=floorImgs[k].getAttribute("address");   
             } 
+            floorBtns[i].flag=true;
         }
+    }
     }
     /**广告加载 */
     for(var i=0;i<ads.length;i++){
         var adImgs=ads[i].querySelectorAll("img");
-        if(document.documentElement.scrollTop>=ads[i].offsetTop){
+        if(!ads[i].flag){
+        if(document.documentElement.scrollTop+window.innerHeight>ads[i].offsetTop){
             for(var k=0;k<adImgs.length;k++){
                 adImgs[k].src=adImgs[k].getAttribute("address");   
-            } 
+            }
+            ads[i].flag=true; 
         }
+    }
     }
 }
 /** 给屏幕左下角导航栏添加点击事件*/
@@ -441,7 +469,13 @@ for(var i=0;i<floorBtns.length;i++){
         ani(document.documentElement,{scrollTop:this.top},500,Tween.Linear);
     }
 }
-
+/**给顶部按钮添加点击事件 */
+var backTop=document.querySelector(".nav-warpper .data-spm .last");
+backTop.onclick=function(){
+    ani(document.documentElement,{
+        scrollTop:0,
+    },500,Tween.Linear)
+}
 
 
 
